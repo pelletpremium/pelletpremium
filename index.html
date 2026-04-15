@@ -3,31 +3,59 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- TITULO: lo que aparece en la pestaña del navegador y en Google -->
   <title>Pellet Premium — Pellets Grado A1 certificados</title>
+
+  <!-- DESCRIPCION: texto que muestra Google debajo del titulo en los resultados de busqueda -->
   <meta name="description" content="Pellets de biomasa Grado A1 certificados por Bureau Veritas. Bolsas 15kg, entrega a domicilio. Precio $3.890/bolsa." />
+
+  <!-- ICONO: el logo que aparece en la pestaña del navegador (archivo logo.png en la misma carpeta) -->
   <link rel="icon" href="logo.png" type="image/png" />
+
+  <!-- FUENTES: carga Montserrat (titulos) e Inter (texto) desde Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- ESTILOS: archivo style.css con todos los colores, tamaños y diseño -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<!-- ── CONFIGURACION ── -->
+<!-- ══════════════════════════════════════════
+     CONFIGURACION GLOBAL
+     Cambia aqui el numero de WhatsApp, precio, etc.
+     ══════════════════════════════════════════ -->
 <script>
-  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzlzaReU2iCuamjm4QogyKUCLissl36ilLbQItS-WrpjcCf7LA_dpoJ-OLxWiuiuI7Y/exec'; // Pegar URL del Google Apps Script aqui
+  // URL del Google Apps Script (para guardar pedidos en Google Sheets/Calendar)
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzlzaReU2iCuamjm4QogyKUCLissl36ilLbQItS-WrpjcCf7LA_dpoJ-OLxWiuiuI7Y/exec';
+
+  // Numero de WhatsApp sin espacios ni simbolos (codigo de pais + numero)
   const WHATSAPP_NUMBER  = '56991063520';
-  const SECRET_TOKEN     = 'PP-2024-X9K'; // Debe coincidir con EXPECTED_TOKEN en apps-script.gs
+
+  // Token de seguridad para verificar que los pedidos vienen de tu sitio
+  const SECRET_TOKEN     = 'PP-2024-X9K';
+
+  // Mensaje predeterminado cuando alguien hace clic en el boton de WhatsApp
   const WA_MSG_TEMPLATE  = 'Hola! Quiero hacer un pedido de pellets. ';
 </script>
 
-<!-- ── HEADER ── -->
+
+<!-- ══════════════════════════════════════════
+     HEADER (barra de navegacion superior)
+     ══════════════════════════════════════════ -->
 <header>
   <div class="header-inner">
+
+    <!-- Logo: imagen + texto. Si logo.png no carga, oculta la imagen -->
     <a href="#" class="logo">
       <img src="logo.png" alt="Pellet Premium" onerror="this.style.display='none'" />
       <span class="logo-text">Pellet<span>Premium</span></span>
     </a>
+
+    <!-- Menu de navegacion (version escritorio) -->
+    <!-- Cada href="#seccion" lleva al usuario a esa seccion de la pagina -->
     <nav>
       <a href="#beneficios">Beneficios</a>
       <a href="#precios">Precios</a>
@@ -35,10 +63,14 @@
       <a href="#contacto">Contacto</a>
       <a href="#pedido" class="btn btn-primary nav-cta">Pedir ahora</a>
     </nav>
+
+    <!-- Boton hamburguesa (solo visible en celular) -->
     <div class="hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
       <span></span><span></span><span></span>
     </div>
   </div>
+
+  <!-- Menu desplegable en celular (se abre al tocar el hamburger) -->
   <div class="mobile-menu" id="mobileMenu">
     <a href="#beneficios" onclick="cerrarMenu()">Beneficios</a>
     <a href="#precios" onclick="cerrarMenu()">Precios</a>
@@ -48,18 +80,32 @@
   </div>
 </header>
 
-<!-- ── HERO ── -->
+
+<!-- ══════════════════════════════════════════
+     HERO (seccion principal, lo primero que ve el cliente)
+     ══════════════════════════════════════════ -->
 <section class="hero" id="inicio">
   <div class="container">
     <div class="hero-inner">
       <div class="hero-content">
+
+        <!-- Etiqueta destacada arriba del titulo -->
         <span class="badge">Grado A1 — La mas alta clasificacion</span>
+
+        <!-- Titulo principal. El texto dentro de <span> se muestra en color naranja -->
         <h1>El pellet que <span>rinde mas</span> y llega a tu puerta</h1>
+
+        <!-- Parrafo descriptivo debajo del titulo -->
         <p>Pellets de biomasa certificados por Bureau Veritas. Maxima eficiencia energetica, minimas cenizas. Entrega coordinada a domicilio.</p>
+
+        <!-- Botones de accion -->
         <div class="hero-btns">
           <a href="#pedido" class="btn btn-primary">Hacer mi pedido</a>
           <a href="#como-funciona" class="btn btn-outline">Como funciona</a>
         </div>
+
+        <!-- Estadisticas tecnicas (4 numeros destacados) -->
+        <!-- Para cambiar un valor, edita el texto dentro de <span class="stat-value"> -->
         <div class="hero-stats">
           <div class="stat-item">
             <span class="stat-value">4,84</span>
@@ -79,6 +125,8 @@
           </div>
         </div>
       </div>
+
+      <!-- Imagen del producto (archivo producto1.png en la misma carpeta) -->
       <div class="hero-image">
         <img src="producto1.png" alt="Bolsa de pellet AcoPellet 15kg Grado A1" />
       </div>
@@ -86,7 +134,12 @@
   </div>
 </section>
 
-<!-- ── BENEFICIOS ── -->
+
+<!-- ══════════════════════════════════════════
+     BENEFICIOS (6 tarjetas con ventajas del producto)
+     Para agregar una tarjeta: copia un bloque <div class="beneficio-card"> y pegalo
+     Para eliminar una: borra el bloque completo
+     ══════════════════════════════════════════ -->
 <section class="beneficios" id="beneficios">
   <div class="container">
     <div class="section-header">
@@ -94,41 +147,53 @@
       <p>No todos los pellets son iguales. Estos son los datos reales que nos diferencian.</p>
     </div>
     <div class="beneficios-grid">
+
+      <!-- Tarjeta de beneficio: icono + titulo + descripcion -->
       <div class="beneficio-card">
         <div class="beneficio-icon">🔥</div>
         <h3>Maximo poder calorifico</h3>
         <p>4,84 kWh/kg verificado en laboratorio. Menos pellet para la misma calefaccion — tu estufa rinde mas.</p>
       </div>
+
       <div class="beneficio-card">
         <div class="beneficio-icon">💧</div>
         <h3>Humedad minima: 6,6%</h3>
         <p>Por debajo del limite A1 de 10%. Menos humedad = combustion mas eficiente y limpia en tu estufa.</p>
       </div>
+
       <div class="beneficio-card">
         <div class="beneficio-icon">💪</div>
         <h3>98,1% de durabilidad</h3>
         <p>No se pulverizan en el transporte. Llegan enteros, sin desperdicios, directamente a tu deposito.</p>
       </div>
+
       <div class="beneficio-card">
         <div class="beneficio-icon">🏅</div>
         <h3>Certificado Bureau Veritas</h3>
         <p>Informe SCF-81995. Todos los parametros verificados por laboratorio independiente acreditado.</p>
       </div>
+
       <div class="beneficio-card">
         <div class="beneficio-icon">🚚</div>
         <h3>Entrega coordinada</h3>
         <p>Turno manana o tarde, fecha a tu eleccion. Agendamos todo y te confirmamos por WhatsApp.</p>
       </div>
+
       <div class="beneficio-card">
         <div class="beneficio-icon">🌿</div>
         <h3>Biomasa renovable</h3>
         <p>100% Pino Radiata de origen controlado. Combustible de carbono neutro, amigable con el medioambiente.</p>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- ── CERTIFICACIONES ── -->
+
+<!-- ══════════════════════════════════════════
+     CERTIFICACIONES (tabla con datos tecnicos del laboratorio)
+     Para cambiar un valor: edita el texto dentro de <span class="cert-value">
+     ══════════════════════════════════════════ -->
 <section class="certificaciones" id="certificaciones">
   <div class="container">
     <div class="section-header">
@@ -136,6 +201,8 @@
       <p>Informe SCF-81995 emitido por Bureau Veritas / CESMEC. Norma NCh-ISO 17225/2:2017.</p>
     </div>
     <div class="cert-grid">
+
+      <!-- Cada cert-card muestra: valor | parametro | clasificacion -->
       <div class="cert-card">
         <span class="cert-value">6,6%</span>
         <div class="cert-param">Humedad (limite ≤10%)</div>
@@ -176,12 +243,20 @@
         <div class="cert-param">Metales pesados</div>
         <span class="cert-badge-ok">No detectados</span>
       </div>
+
     </div>
     <p class="cert-footer">Certificado por Bureau Veritas | Informe SCF-81995 | Norma NCh-ISO 17225/2:2017</p>
   </div>
 </section>
 
-<!-- ── PRECIOS ── -->
+
+<!-- ══════════════════════════════════════════
+     PRECIOS
+     Para cambiar el precio:
+       1. Cambia el numero en <div class="precio-valor">
+       2. Actualiza el calculo del total en precio-detalle
+       3. Cambia tambien el valor en el bloque <script> al final (const precio = XXXX)
+     ══════════════════════════════════════════ -->
 <section class="precios" id="precios">
   <div class="container">
     <div class="section-header">
@@ -189,17 +264,26 @@
       <p>Pedido minimo 20 bolsas (300 kg). Precio por bolsa de 15kg.</p>
     </div>
     <div class="precios-grid">
+
+      <!-- Tarjeta de precio unico -->
       <div class="precio-card destacado">
         <div class="precio-rango">Precio por bolsa</div>
+        <!-- PRECIO PRINCIPAL: cambiar el numero aqui -->
         <div class="precio-valor"><sup>$</sup>3.890</div>
         <div class="precio-unidad">por bolsa de 15 kg</div>
+        <!-- Ejemplo de pedido minimo (20 bolsas x $3.890 = $77.800) -->
         <div class="precio-detalle">Pedido de 20 bolsas = <strong>$77.800</strong><br />300 kg de pellet Grado A1</div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- ── COMO FUNCIONA ── -->
+
+<!-- ══════════════════════════════════════════
+     COMO FUNCIONA (pasos del proceso de pedido)
+     Para cambiar el texto de un paso: edita el <h3> y el <p> de cada .paso
+     ══════════════════════════════════════════ -->
 <section class="como-funciona" id="como-funciona">
   <div class="container">
     <div class="section-header">
@@ -207,31 +291,40 @@
       <p>Rapido, coordinado y sin complicaciones.</p>
     </div>
     <div class="pasos">
+
       <div class="paso">
         <div class="paso-num">1</div>
         <h3>Completa el formulario</h3>
         <p>Indica la cantidad, tu direccion y la fecha que mejor te queda.</p>
       </div>
+
       <div class="paso">
         <div class="paso-num">2</div>
         <h3>Confirmamos tu pedido</h3>
         <p>Te contactamos por WhatsApp para confirmar los detalles y el pago.</p>
       </div>
+
       <div class="paso">
         <div class="paso-num">3</div>
         <h3>Agendamos la entrega</h3>
         <p>Coordinamos el turno (mañana 8-12hs o tarde 14-18hs) que prefieras.</p>
       </div>
+
       <div class="paso">
         <div class="paso-num">4</div>
         <h3>Recibis en tu casa</h3>
         <p>Entrega a domicilio con todas las bolsas en perfecto estado.</p>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- ── FORMULARIO ── -->
+
+<!-- ══════════════════════════════════════════
+     FORMULARIO DE PEDIDO
+     Los campos marcados con * son obligatorios
+     ══════════════════════════════════════════ -->
 <section class="formulario" id="pedido">
   <div class="container">
     <div class="section-header">
@@ -242,11 +335,13 @@
       <form id="formPedido" novalidate>
         <div class="form-grid">
 
+          <!-- Campo: nombre del cliente -->
           <div class="form-group">
             <label for="nombre">Nombre completo *</label>
             <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
           </div>
 
+          <!-- Campo: telefono con prefijo +56 fijo -->
           <div class="form-group">
             <label for="telefono">Telefono / WhatsApp *</label>
             <div class="input-prefix">
@@ -255,15 +350,21 @@
             </div>
           </div>
 
+          <!-- Campo: email (no obligatorio) -->
           <div class="form-group full">
             <label for="email">Email (opcional)</label>
             <input type="email" id="email" name="email" placeholder="tu@email.com" />
           </div>
 
+          <!-- Campo: cantidad de bolsas + calculadora automatica de precio -->
           <div class="form-group full">
             <label for="bolsas">Cantidad de bolsas (minimo 20) *</label>
             <input type="number" id="bolsas" name="bolsas" min="20" step="1" placeholder="Ej: 40" required />
+
+            <!-- Mensaje de error si pone menos de 20 bolsas -->
             <span class="form-error" id="errorBolsas">El pedido minimo es de 20 bolsas (300 kg)</span>
+
+            <!-- Calculadora: aparece automaticamente al escribir la cantidad -->
             <div class="calculadora" id="calculadora" style="display:none">
               <div class="calc-item">
                 <span class="calc-label">Bolsas</span>
@@ -284,11 +385,14 @@
             </div>
           </div>
 
+          <!-- Campo: fecha de entrega (no permite fechas pasadas) -->
           <div class="form-group">
             <label for="fecha">Fecha de entrega *</label>
             <input type="date" id="fecha" name="fecha" required />
           </div>
 
+          <!-- Campo: turno de entrega -->
+          <!-- Para agregar un turno: copia una linea <option> y cambia el texto -->
           <div class="form-group">
             <label for="turno">Turno *</label>
             <select id="turno" name="turno" required>
@@ -298,31 +402,37 @@
             </select>
           </div>
 
+          <!-- Campo: direccion de entrega -->
           <div class="form-group">
             <label for="direccion">Direccion *</label>
             <input type="text" id="direccion" name="direccion" placeholder="Calle y numero" required />
           </div>
 
+          <!-- Campo: ciudad -->
           <div class="form-group">
             <label for="localidad">Ciudad / Localidad *</label>
             <input type="text" id="localidad" name="localidad" placeholder="Tu ciudad" required />
           </div>
 
+          <!-- Campo: comentarios opcionales -->
           <div class="form-group full">
             <label for="comentarios">Comentarios adicionales</label>
             <textarea id="comentarios" name="comentarios" placeholder="Acceso especial, referencias, etc."></textarea>
           </div>
 
-          <!-- Honeypot: si este campo tiene contenido, es un bot -->
+          <!-- Campo trampa anti-bots (invisible para humanos, los bots lo completan) -->
+          <!-- NO borrar este bloque, es seguridad -->
           <div class="hp-field" aria-hidden="true">
             <label for="hp_name">No completar</label>
             <input type="text" id="hp_name" name="hp_name" tabindex="-1" autocomplete="off" />
           </div>
 
+          <!-- Boton de envio + mensaje de resultado -->
           <div class="form-group full">
             <button type="submit" class="btn btn-primary btn-submit" id="btnSubmit">
               Enviar pedido
             </button>
+            <!-- Aqui aparece el mensaje de exito o error despues de enviar -->
             <div class="form-msg" id="formMsg"></div>
           </div>
 
@@ -332,18 +442,26 @@
   </div>
 </section>
 
-<!-- ── CONTACTO ── -->
+
+<!-- ══════════════════════════════════════════
+     CONTACTO (informacion y boton de WhatsApp)
+     ══════════════════════════════════════════ -->
 <section class="contacto" id="contacto">
   <div class="container">
     <div class="contacto-inner">
+
+      <!-- Lado izquierdo: texto + boton WhatsApp -->
       <div class="contacto-info">
         <h2>Tambien podes escribirnos directo</h2>
         <p>Si tenes dudas sobre el producto, precios mayoristas o queres coordinar una entrega grande, escribinos por WhatsApp y te respondemos rapido.</p>
+        <!-- El href se completa automaticamente con el numero de WhatsApp del script -->
         <a id="waContactoBtn" href="#" class="wa-btn" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Escribirnos por WhatsApp
         </a>
       </div>
+
+      <!-- Lado derecho: 3 tarjetas de informacion rapida -->
       <div class="contacto-cards">
         <div class="contact-card">
           <div class="contact-icon">📦</div>
@@ -367,11 +485,15 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- ── FOOTER ── -->
+
+<!-- ══════════════════════════════════════════
+     FOOTER (pie de pagina)
+     ══════════════════════════════════════════ -->
 <footer>
   <div class="container">
     <p><strong>Pellet Premium</strong> — Pellets de biomasa Grado A1 certificados</p>
@@ -379,28 +501,39 @@
   </div>
 </footer>
 
-<!-- ── BOTON WHATSAPP FLOTANTE ── -->
+
+<!-- ══════════════════════════════════════════
+     BOTON WHATSAPP FLOTANTE
+     El circulo verde que aparece fijo en la esquina inferior derecha
+     ══════════════════════════════════════════ -->
 <a id="waFloatBtn" href="#" class="wa-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
-<!-- ── JAVASCRIPT ── -->
+
+<!-- ══════════════════════════════════════════
+     JAVASCRIPT (logica de la pagina)
+     ══════════════════════════════════════════ -->
 <script>
-  // ── Menu hamburguesa ──
+  // ── Menu hamburguesa (celular) ──
+  // Abre y cierra el menu cuando se toca el icono de tres rayas
   const hamburger  = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
   hamburger.addEventListener('keydown', e => { if (e.key === 'Enter') mobileMenu.classList.toggle('open'); });
   function cerrarMenu() { mobileMenu.classList.remove('open'); }
 
-  // ── Links WhatsApp ──
+  // ── Links de WhatsApp ──
+  // Construye la URL de WhatsApp con el numero y el mensaje predeterminado
   function buildWaUrl(msg) {
     return 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(msg || WA_MSG_TEMPLATE);
   }
-  document.getElementById('waFloatBtn').href   = buildWaUrl(WA_MSG_TEMPLATE);
+  // Asigna el link al boton flotante y al boton de la seccion contacto
+  document.getElementById('waFloatBtn').href    = buildWaUrl(WA_MSG_TEMPLATE);
   document.getElementById('waContactoBtn').href = buildWaUrl(WA_MSG_TEMPLATE);
 
-  // ── Fecha minima (hoy) ──
+  // ── Fecha minima en el formulario ──
+  // Impide que el cliente elija una fecha pasada
   const inputFecha = document.getElementById('fecha');
   const hoy = new Date();
   const yyyy = hoy.getFullYear();
@@ -409,14 +542,16 @@
   inputFecha.min = `${yyyy}-${mm}-${dd}`;
 
   // ── Calculadora de precio ──
-  const inputBolsas  = document.getElementById('bolsas');
-  const calculadora  = document.getElementById('calculadora');
-  const calcBolsas   = document.getElementById('calcBolsas');
-  const calcPrecio   = document.getElementById('calcPrecio');
-  const calcKg       = document.getElementById('calcKg');
-  const calcTotal    = document.getElementById('calcTotal');
-  const errorBolsas  = document.getElementById('errorBolsas');
+  // Se activa cada vez que el cliente escribe la cantidad de bolsas
+  const inputBolsas = document.getElementById('bolsas');
+  const calculadora = document.getElementById('calculadora');
+  const calcBolsas  = document.getElementById('calcBolsas');
+  const calcPrecio  = document.getElementById('calcPrecio');
+  const calcKg      = document.getElementById('calcKg');
+  const calcTotal   = document.getElementById('calcTotal');
+  const errorBolsas = document.getElementById('errorBolsas');
 
+  // Formatea un numero como precio en pesos chilenos: $3.890
   function formatPeso(n) {
     return '$' + Number(n).toLocaleString('es-CL');
   }
@@ -424,23 +559,28 @@
   inputBolsas.addEventListener('input', () => {
     const cantidad = parseInt(inputBolsas.value, 10);
 
+    // Si el campo esta vacio o es 0, oculta todo
     if (!cantidad || cantidad < 1) {
       calculadora.style.display = 'none';
       errorBolsas.classList.remove('visible');
       return;
     }
 
+    // Si es menos de 20, muestra el error de minimo
     if (cantidad < 20) {
       calculadora.style.display = 'none';
       errorBolsas.classList.add('visible');
       return;
     }
 
+    // Calculo del total
+    // IMPORTANTE: si cambias el precio, cambialo aqui tambien
     errorBolsas.classList.remove('visible');
-    const precio = 3890;
+    const precio = 3890;           // <-- PRECIO POR BOLSA
     const total  = precio * cantidad;
-    const kg     = cantidad * 15;
+    const kg     = cantidad * 15;  // cada bolsa pesa 15 kg
 
+    // Muestra los resultados en la calculadora
     calcBolsas.textContent = cantidad;
     calcPrecio.textContent = formatPeso(precio);
     calcKg.textContent     = kg + ' kg';
@@ -449,17 +589,17 @@
   });
 
   // ── Envio del formulario ──
-  const form     = document.getElementById('formPedido');
+  const form      = document.getElementById('formPedido');
   const btnSubmit = document.getElementById('btnSubmit');
-  const formMsg  = document.getElementById('formMsg');
+  const formMsg   = document.getElementById('formMsg');
 
   form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Evita que la pagina se recargue al hacer submit
 
-    // ── Honeypot: si el campo oculto tiene contenido, es un bot ──
+    // Si el campo oculto anti-bot tiene contenido, es un bot — ignorar
     if (document.getElementById('hp_name').value) return;
 
-    // ── Validar cantidad minima ──
+    // Valida que la cantidad sea al menos 20 bolsas
     const cantidad = parseInt(inputBolsas.value, 10);
     if (!cantidad || cantidad < 20) {
       errorBolsas.classList.add('visible');
@@ -467,7 +607,7 @@
       return;
     }
 
-    // ── Validar telefono chileno (9 + 8 digitos) ──
+    // Valida el telefono: debe empezar con 9 y tener 9 digitos en total
     const telefonoRaw = document.getElementById('telefono').value.trim().replace(/\s/g, '');
     if (!/^9\d{8}$/.test(telefonoRaw)) {
       formMsg.className = 'form-msg err';
@@ -475,8 +615,9 @@
       return;
     }
 
-    // ── Recopilar datos ──
-    const precio = 3890;
+    // Recopila todos los datos del formulario
+    // IMPORTANTE: si cambias el precio, cambialo aqui tambien
+    const precio = 3890; // <-- PRECIO POR BOLSA
     const total  = precio * cantidad;
     const datos  = {
       token:       SECRET_TOKEN,
@@ -493,28 +634,29 @@
       comentarios: document.getElementById('comentarios').value.trim(),
     };
 
-    // ── Validar campos requeridos ──
+    // Verifica que los campos obligatorios no esten vacios
     if (!datos.nombre || !datos.fecha || !datos.turno || !datos.direccion || !datos.localidad) {
       formMsg.className = 'form-msg err';
       formMsg.textContent = 'Por favor completa todos los campos obligatorios.';
       return;
     }
 
-    // ── Si no hay URL del Apps Script, abrir WhatsApp ──
+    // Si no hay URL del Apps Script configurada, abre WhatsApp directamente
     if (!APPS_SCRIPT_URL) {
       const msg = `Hola! Quiero hacer un pedido:\n- Nombre: ${datos.nombre}\n- Bolsas: ${datos.bolsas} x 15kg\n- Total: ${formatPeso(datos.total)}\n- Fecha: ${datos.fecha} (${datos.turno})\n- Direccion: ${datos.direccion}, ${datos.localidad}`;
       window.open(buildWaUrl(msg), '_blank');
       return;
     }
 
-    // ── Enviar via Web3Forms ──
+    // Deshabilita el boton y muestra "Enviando..." mientras procesa
     btnSubmit.disabled = true;
     btnSubmit.textContent = 'Enviando...';
     formMsg.className = 'form-msg';
 
     try {
+      // Envia el pedido por email via Web3Forms (servicio gratuito)
       const payload = {
-        access_key: 'a0b535e0-84ef-4633-bb0d-7b7f780a860b',
+        access_key: 'a0b535e0-84ef-4633-bb0d-7b7f780a860b', // clave de Web3Forms
         subject:    `Nuevo pedido — ${datos.nombre} (${datos.bolsas} bolsas)`,
         from_name:  'Pellet Premium Web',
         name:       datos.nombre,
@@ -538,6 +680,7 @@
       const result = await resp.json();
 
       if (result.success) {
+        // Exito: muestra mensaje verde y limpia el formulario
         formMsg.className = 'form-msg ok';
         formMsg.textContent = '¡Pedido recibido! Te contactamos en menos de 24 horas para confirmar.';
         form.reset();
@@ -546,10 +689,12 @@
         throw new Error(result.message || 'Error desconocido');
       }
     } catch (err) {
+      // Error: muestra mensaje rojo con alternativa por WhatsApp
       console.error(err);
       formMsg.className = 'form-msg err';
       formMsg.textContent = 'Hubo un problema al enviar. Escribinos directamente por WhatsApp.';
     } finally {
+      // Siempre vuelve a habilitar el boton al terminar
       btnSubmit.disabled = false;
       btnSubmit.textContent = 'Enviar pedido';
     }
