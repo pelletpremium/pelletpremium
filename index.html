@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pellet Premium — Pellets Grado A1 certificados</title>
-  <meta name="description" content="Pellets de biomasa Grado A1 certificados por Bureau Veritas. Bolsas 15kg, entrega a domicilio. Precio desde $4.100/bolsa." />
+  <meta name="description" content="Pellets de biomasa Grado A1 certificados por Bureau Veritas. Bolsas 15kg, entrega a domicilio. Precio $3.890/bolsa." />
   <link rel="icon" href="logo.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -189,18 +189,11 @@
       <p>Pedido minimo 20 bolsas (300 kg). Precio por bolsa de 15kg.</p>
     </div>
     <div class="precios-grid">
-      <div class="precio-card">
-        <div class="precio-rango">20 a 74 bolsas</div>
-        <div class="precio-valor"><sup>$</sup>4.100</div>
-        <div class="precio-unidad">por bolsa de 15 kg</div>
-        <div class="precio-detalle">Pedido de 20 bolsas = <strong>$82.000</strong><br />300 kg de pellet Grado A1</div>
-      </div>
       <div class="precio-card destacado">
-        <div class="precio-tag">Mejor precio</div>
-        <div class="precio-rango">75 bolsas o mas</div>
-        <div class="precio-valor"><sup>$</sup>3.990</div>
+        <div class="precio-rango">Precio por bolsa</div>
+        <div class="precio-valor"><sup>$</sup>3.890</div>
         <div class="precio-unidad">por bolsa de 15 kg</div>
-        <div class="precio-detalle">Pedido de 75 bolsas = <strong>$299.250</strong><br />1.125 kg — precio mayorista</div>
+        <div class="precio-detalle">Pedido de 20 bolsas = <strong>$77.800</strong><br />300 kg de pellet Grado A1</div>
       </div>
     </div>
   </div>
@@ -300,7 +293,7 @@
             <label for="turno">Turno *</label>
             <select id="turno" name="turno" required>
               <option value="">Elegir turno...</option>
-              <option value="Manana (8-12hs)">Manana (8 - 12hs)</option>
+              <option value="Mañana (8-12hs)">Mañana (8 - 12hs)</option>
               <option value="Tarde (14-18hs)">Tarde (14 - 18hs)</option>
             </select>
           </div>
@@ -363,7 +356,7 @@
           <div class="contact-icon">🕐</div>
           <div>
             <h4>Horarios de entrega</h4>
-            <p>Manana: 8 a 12hs — Tarde: 14 a 18hs</p>
+            <p>Mañana: 8 a 12hs — Tarde: 14 a 18hs</p>
           </div>
         </div>
         <div class="contact-card">
@@ -444,7 +437,7 @@
     }
 
     errorBolsas.classList.remove('visible');
-    const precio = cantidad >= 75 ? 3990 : 4100;
+    const precio = 3890;
     const total  = precio * cantidad;
     const kg     = cantidad * 15;
 
@@ -483,7 +476,7 @@
     }
 
     // ── Recopilar datos ──
-    const precio = cantidad >= 75 ? 3990 : 4100;
+    const precio = 3890;
     const total  = precio * cantidad;
     const datos  = {
       token:       SECRET_TOKEN,
