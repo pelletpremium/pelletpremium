@@ -512,6 +512,14 @@ input[type="date"] {
 }
 .wa-btn:hover { transform: translateY(-2px); opacity: .92; }
 .wa-btn svg { width: 22px; height: 22px; fill: #fff; }
+.wa-numero {
+  margin-top: 14px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--negro);
+  letter-spacing: 0.5px;
+}
 .contacto-cards { display: flex; flex-direction: column; gap: 16px; }
 .contact-card {
   background: #fff;
