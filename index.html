@@ -8,7 +8,7 @@
   <title>Pellet Premium — Pellets Grado A1 certificados</title>
 
   <!-- DESCRIPCION: texto que muestra Google debajo del titulo en los resultados de busqueda -->
-  <meta name="description" content="Pellets de biomasa Grado A1 certificados por Bureau Veritas. Entrega a domicilio en Chillán, Bulnes, San Carlos, Pinto y Chillán Viejo. Precio $3.890/bolsa." />
+  <meta name="description" content="Pellets de biomasa Grado A1 certificados por Bureau Veritas. Entrega a domicilio en Chillán, Bulnes, San Carlos, Pinto y Chillán Viejo. Precio $3.990/bolsa." />
 
   <!-- ICONO: el logo que aparece en la pestaña del navegador (archivo logo.png en la misma carpeta) -->
   <link rel="icon" href="logo.png" type="image/png" />
@@ -24,7 +24,7 @@
   <!-- OPEN GRAPH: vista previa al compartir en WhatsApp, Instagram, Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Pellet Premium — Pellets Grado A1 certificados" />
-  <meta property="og:description" content="Pellets de biomasa Grado A1 certificados por Bureau Veritas. Entrega a domicilio en Chillán, Bulnes, San Carlos, Pinto y Chillán Viejo. Precio $3.890/bolsa." />
+  <meta property="og:description" content="Pellets de biomasa Grado A1 certificados por Bureau Veritas. Entrega a domicilio en Chillán, Bulnes, San Carlos, Pinto y Chillán Viejo. Precio $3.990/bolsa." />
   <meta property="og:image" content="https://pelletpremium.cl/producto1.png" />
   <meta property="og:url" content="https://pelletpremium.cl/" />
   <meta property="og:locale" content="es_CL" />
@@ -272,10 +272,10 @@
       <div class="precio-card destacado">
         <div class="precio-rango">Precio por bolsa</div>
         <!-- PRECIO PRINCIPAL: cambiar el numero aqui -->
-        <div class="precio-valor"><sup>$</sup>3.890</div>
+        <div class="precio-valor"><sup>$</sup>3.990</div>
         <div class="precio-unidad">por bolsa de 15 kg</div>
-        <!-- Ejemplo de pedido minimo (20 bolsas x $3.890 = $77.800) -->
-        <div class="precio-detalle">Pedido de 20 bolsas = <strong>$77.800</strong><br />300 kg de pellet Grado A1</div>
+        <!-- Ejemplo de pedido minimo (20 bolsas x $3.990 = $79.800) -->
+        <div class="precio-detalle">Pedido de 20 bolsas = <strong>$79.800</strong><br />300 kg de pellet Grado A1</div>
       </div>
 
     </div>
@@ -414,7 +414,25 @@
           <!-- Campo: ciudad -->
           <div class="form-group">
             <label for="localidad">Ciudad / Localidad *</label>
-            <input type="text" id="localidad" name="localidad" placeholder="Chillán, Bulnes, San Carlos..." required />
+            <select id="localidad" name="localidad" required>
+              <option value="">Seleccionar ciudad...</option>
+              <option value="Chillán">Chillán</option>
+              <option value="Chillán Viejo">Chillán Viejo</option>
+              <option value="Bulnes">Bulnes</option>
+              <option value="Coihueco">Coihueco</option>
+              <option value="Pinto">Pinto</option>
+              <option value="San Carlos">San Carlos</option>
+            </select>
+          </div>
+
+          <!-- Campo: metodo de pago -->
+          <div class="form-group full">
+            <label for="pago">Método de pago *</label>
+            <select id="pago" name="pago" required>
+              <option value="">Seleccionar...</option>
+              <option value="Efectivo">Efectivo</option>
+              <option value="Transferencia bancaria">Transferencia bancaria</option>
+            </select>
           </div>
 
           <!-- Campo: comentarios opcionales -->
@@ -557,7 +575,7 @@
   const calcTotal   = document.getElementById('calcTotal');
   const errorBolsas = document.getElementById('errorBolsas');
 
-  // Formatea un numero como precio en pesos chilenos: $3.890
+  // Formatea un numero como precio en pesos chilenos: $3.990
   function formatPeso(n) {
     return '$' + Number(n).toLocaleString('es-CL');
   }
@@ -582,7 +600,7 @@
     // Calculo del total
     // IMPORTANTE: si cambias el precio, cambialo aqui tambien
     errorBolsas.classList.remove('visible');
-    const precio = 3890;           // <-- PRECIO POR BOLSA
+    const precio = 3990;           // <-- PRECIO POR BOLSA
     const total  = precio * cantidad;
     const kg     = cantidad * 15;  // cada bolsa pesa 15 kg
 
@@ -623,7 +641,7 @@
 
     // Recopila todos los datos del formulario
     // IMPORTANTE: si cambias el precio, cambialo aqui tambien
-    const precio = 3890; // <-- PRECIO POR BOLSA
+    const precio = 3990; // <-- PRECIO POR BOLSA
     const total  = precio * cantidad;
     const datos  = {
       nombre:      document.getElementById('nombre').value.trim(),
@@ -634,13 +652,14 @@
       total:       total,
       fecha:       document.getElementById('fecha').value,
       turno:       document.getElementById('turno').value,
+      pago:        document.getElementById('pago').value,
       direccion:   document.getElementById('direccion').value.trim(),
       localidad:   document.getElementById('localidad').value.trim(),
       comentarios: document.getElementById('comentarios').value.trim(),
     };
 
     // Verifica que los campos obligatorios no esten vacios
-    if (!datos.nombre || !datos.fecha || !datos.turno || !datos.direccion || !datos.localidad) {
+    if (!datos.nombre || !datos.fecha || !datos.turno || !datos.pago || !datos.direccion || !datos.localidad) {
       formMsg.className = 'form-msg err';
       formMsg.textContent = 'Por favor completa todos los campos obligatorios.';
       return;
@@ -664,6 +683,7 @@
           `Bolsas: ${datos.bolsas} x 15kg`,
           `Precio/bolsa: $${datos.precio.toLocaleString('es-CL')}`,
           `TOTAL: $${datos.total.toLocaleString('es-CL')}`,
+          `Pago: ${datos.pago}`,
           `Fecha: ${datos.fecha} — ${datos.turno}`,
           `Direccion: ${datos.direccion}, ${datos.localidad}`,
           datos.comentarios ? `Comentarios: ${datos.comentarios}` : null,
